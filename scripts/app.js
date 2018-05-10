@@ -1,6 +1,6 @@
 const appModule = {
   manipulateStrings: (strings) => {
-    let result;
+    let result = [];
 
     strings.forEach((element, index, array) => {
       const found = array.find((el, i) => {
@@ -9,10 +9,13 @@ const appModule = {
         }
       });
 
-      if (found) result = `${found},${element}`;
+      if (found) {
+        if (result.indexOf(found) === -1) result.push(found);
+        if (result.indexOf(element) === -1) result.push(element);
+      }
     });
     
-    return result ? result : '';
+    return result.length > 0 ? result : '';
   }
 }
 

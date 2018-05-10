@@ -3,7 +3,7 @@ const app = require('../scripts/app');
 describe('Given an array of strings', () => {
   it('returns the pair if they have the same number of letters', () => {
     const strings = ['dog', 'god', 'arrow', 'balloon'];
-    const expected = ['dog,god'];
+    const expected = ['god','dog'];
 
     expect(app.manipulateStrings(strings)).toEqual(expected);
   });
@@ -24,6 +24,13 @@ describe('Given an array of strings', () => {
 
   it('returns each single pair if there is more than one', () => {
     const strings = ['dog', 'god', 'overcast', 'overacts', 'balloon', 'rainbow'];
-    const expected = ['dog,god', 'overcast,overacts']
+    const expected = [ 'god', 'dog', 'overacts', 'overcast' ];
+
+    expect(app.manipulateStrings(strings)).toEqual(expected);
+    
+    const strings2 = ['dog', 'god', 'love', 'hair', 'hari', 'balloon', 'summit', 'hundreds', 'system', 'mystes'];
+    const expected2 = [ 'god', 'dog', 'hari', 'hair', 'mystes', 'system' ];
+
+    expect(app.manipulateStrings(strings2)).toEqual(expected2);
   });
 });
